@@ -1,0 +1,19 @@
+@echo Adding new register
+
+cmd /c reg add "HKEY_CURRENT_USER\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /f
+
+@echo Deleting old register
+
+cmd /c reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+
+@echo Killing "explorer.exe"
+
+taskkill /f /im explorer.exe
+
+@echo Starting "explorer.exe"
+
+start explorer.exe
+
+@echo Finished!
+
+pause
